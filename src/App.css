@@ -2,37 +2,109 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: rgb(62,169,245)
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.formHolder {
+  margin: 100px auto;
+  width: 500px;
+  color: #fff;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+h1 {
+  font-size: 38px;
+  margin: 10px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+form {
+  margin: 30px auto;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.App-link {
-  color: #61dafb;
+.inputHolder {
+  height: 215px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+  margin-bottom: 20px ;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.input {
+  display: flex;
+  color: #9CA8B7;
+  width: 48%;
+  box-sizing: border-box;
+  font-size: 16px;
+  padding: 10px 23px;
+  height: 60px;
+  border: 2px solid #fff;
+  border-radius: 4px;
+}
+
+.radioList {
+  border: 1px solid white;
+  color: #fff;
+}
+
+.radioList  {
+  display: inline-block;
+  border: 1px solid white;
+  color: #fff;
+  text-align: left;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+    line-height: 1.42857143;
+    margin: 10px 0;
+}
+
+.radioList input {
+  margin: 0 15px;
+}
+
+.radioList span {
+  display: block;
+  font-size: 12px;
+  margin-left: 43px
+}
+
+.checkbox{
+  font-weight: 400;
+    color: #fff;
+    font-size: 13px;
+    padding: 10px;
+    width: 100%;
+    line-height: 1.42857143; 
+}
+
+.checkbox input {
+  margin: 0 15px;
+}
+
+.button {
+  background-color: #28d2d0;
+  border-radius: 4px;
+    height: 64px;
+    width: 100%;
+    border: 0;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  border: none;
+  padding: 10px;
+  line-height: 1.42857143;
+  margin: 10px 0;
 }
