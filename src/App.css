@@ -108,3 +108,7 @@ form {
   line-height: 1.42857143;
   margin: 10px 0;
 }
+
+.error {
+  border: 3px solid red;
+}

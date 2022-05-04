@@ -1,14 +1,14 @@
 function Passwords (props) {
   const arr = [
-    {name: 'password', placeholder: 'Password', props: props.password },
-    {name: 'passwordConfirmation', placeholder: 'Password Confirmation', props: props.passwordConfirmation },
+    {name: 'password', placeholder: 'Password', props: props.password, error: props.errors.password  },
+    {name: 'passwordConfirmation', placeholder: 'Password Confirmation', props: props.passwordConfirmation, error: props.errors.passwordConfirmation },
   ]
 
 
   return (arr.map((result) => {
     return (
       <input 
-        className="input"
+        className={"input" + (result.props ? " error" : "")}
         type="password" 
         placeholder={result.placeholder} 
         name={result.name}

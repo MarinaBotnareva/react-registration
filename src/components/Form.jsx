@@ -1,8 +1,20 @@
 import React, {Component} from 'react'
+import {object, string, boolean} from 'yup';
 import Checkbox from './Checkbox'
 import RadioList from './RadioList'
 import TextInputs from './TextInputs'
 import Passwords from './Passwords'
+
+const loginSchema = object({
+  firstName: string().required(),
+  lastName: string().required(),
+  displayName: string().required(),
+  email: string().required().email(),
+  password: string().required().min(8),
+  passwordConfirmation: string().required(),
+  choice: string().required(),
+  isAllow: boolean(),
+})
 
 class Form extends Component {
   constructor(props){
@@ -17,12 +29,25 @@ class Form extends Component {
       passwordConfirmation: '',
       choice: '',
       isAllow: true,
+      errors: {},
     }
   }
   
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
+
+    try{
+    await loginSchema.validate(this.state);
+    } catch(error){
+      this.setState((state)=> {
+        return{
+          ...state,
+          errors: {[error.path]:true}
+        }
+      })
+      return;
+    }
 
     console.log(this.state);
 
@@ -48,16 +73,16 @@ class Form extends Component {
     })
   }
 
-  componentDidUpdate(){
-    console.log(this.state);
-  }
+  // componentDidUpdate(){
+  //   console.log(this.state);
+  // }
 
   render(){
     return(
       <form onSubmit={this.onSubmit}>
         <div className='inputHolder'>
-        <TextInputs onChange = {this.onChange} firstName={this.state.firstName} lastName={this.state.lastName} displayName={this.state.displayName} email={this.state.email} />
-        <Passwords onChange = {this.onChange} password={this.state.password} passwordConfirmation={this.state.passwordConfirmation}/>
+        <TextInputs onChange = {this.onChange} firstName={this.state.firstName} lastName={this.state.lastName} displayName={this.state.displayName} email={this.state.email} errors={this.state.errors} />
+        <Passwords onChange = {this.onChange} password={this.state.password} passwordConfirmation={this.state.passwordConfirmation} errors={this.state.errors}/>
         </div>
         <RadioList onChange = {this.onChange} choice = {this.state.choice}/>
        <Checkbox onChange = {this.onChange} isAllow = {this.state.isAllow}/>
