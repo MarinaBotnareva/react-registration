@@ -12,7 +12,7 @@ const loginSchema = object({
   email: string().required().email(),
   password: string().required().min(8),
   passwordConfirmation: string().required().oneOf([ref('password')]),
-  choice: string().required().oneOf([ref('Join As a Buyer' || 'Join As a Creative or Marketplace Seller')]),
+  choice: string().required().oneOf(['Join As a Buyer', 'Join As a Creative or Marketplace Seller']),
   isAllow: boolean(),
 })
 
