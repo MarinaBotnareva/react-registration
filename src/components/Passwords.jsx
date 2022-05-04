@@ -8,7 +8,7 @@ function Passwords (props) {
   return (arr.map((result) => {
     return (
       <input 
-        className={"input" + (result.props ? " error" : "")}
+        className={"input" + (result.error ? " error" : "")}
         type="password" 
         placeholder={result.placeholder} 
         name={result.name}

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {object, string, boolean} from 'yup';
+import {object, string, ref, boolean} from 'yup';
 import Checkbox from './Checkbox'
 import RadioList from './RadioList'
 import TextInputs from './TextInputs'
@@ -11,8 +11,8 @@ const loginSchema = object({
   displayName: string().required(),
   email: string().required().email(),
   password: string().required().min(8),
-  passwordConfirmation: string().required(),
-  choice: string().required(),
+  passwordConfirmation: string().required().oneOf([ref('password')]),
+  choice: string().required().oneOf([ref('Join As a Buyer' || 'Join As a Creative or Marketplace Seller')]),
   isAllow: boolean(),
 })
 
@@ -40,6 +40,7 @@ class Form extends Component {
     try{
     await loginSchema.validate(this.state);
     } catch(error){
+      console.log(error.message)
       this.setState((state)=> {
         return{
           ...state,

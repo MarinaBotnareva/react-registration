@@ -11,7 +11,7 @@ function TextInputs (props) {
   return (arr.map((result) => {
     return (
       <input 
-        className= {"input" + (result.props ? " error" : "")}
+        className= {"input" + (result.error ? " error" : "")}
         type="text" 
         placeholder={result.placeholder} 
         name={result.name}
